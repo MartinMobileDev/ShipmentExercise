@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ShipmentExercise</string>
+    <string name="toolbar_name">Shipment Exercise</string>
+    <string name="refresh">refresh</string>
+</resources>
