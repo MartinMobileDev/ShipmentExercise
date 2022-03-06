@@ -23,7 +23,7 @@ class DriverListAdapter(private var listener: OnClickListener) :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val driver = getItem(position)
-        with(holder as ViewHolder){
+        with(holder as ViewHolder) {
             setListener(driver)
             binding.tvDriver.text = driver.name
             binding.tvShipment.text = driver.shipment
@@ -31,10 +31,10 @@ class DriverListAdapter(private var listener: OnClickListener) :
         }
     }
 
-    inner class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding = ItemDriverBinding.bind(view)
 
-        fun setListener(driver: Driver){
+        fun setListener(driver: Driver) {
             with(binding.root) {
                 setOnClickListener { listener.onClick(driver) }
             }
@@ -53,6 +53,5 @@ class DriverListAdapter(private var listener: OnClickListener) :
         override fun areContentsTheSame(oldItem: Driver, newItem: Driver): Boolean {
             return oldItem == newItem
         }
-
     }
 }

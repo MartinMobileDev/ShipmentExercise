@@ -9,40 +9,40 @@ class DataProvider {
             return drivers
         }
 
-        fun getAllShipments(): List<Shipment>{
+        fun getAllShipments(): List<Shipment> {
             return shipments
         }
 
         private val drivers = listOf(
             Driver(
-                name = "Everardo Welch",null,null
+                name = "Everardo Welch", null, null
             ),
             Driver(
-                name = "Orval Mayert",null,null
+                name = "Orval Mayert", null, null
             ),
             Driver(
-                name = "Howard Emmerich",null,null
+                name = "Howard Emmerich", null, null
             ),
             Driver(
-                name = "Izaiah Lowe",null,null
+                name = "Izaiah Lowe", null, null
             ),
             Driver(
-                name = "Monica Hermann",null,null
+                name = "Monica Hermann", null, null
             ),
             Driver(
-                name = "Ellis Wisozk",null,null
+                name = "Ellis Wisozk", null, null
             ),
             Driver(
-                name = "Noemie Murphy",null,null
+                name = "Noemie Murphy", null, null
             ),
             Driver(
-                name = "Cleve Durgan",null,null
+                name = "Cleve Durgan", null, null
             ),
             Driver(
-                name = "Murphy Mosciski",null,null
+                name = "Murphy Mosciski", null, null
             ),
             Driver(
-                name = "Kaiser Sose",null,null
+                name = "Kaiser Sose", null, null
             )
         )
 

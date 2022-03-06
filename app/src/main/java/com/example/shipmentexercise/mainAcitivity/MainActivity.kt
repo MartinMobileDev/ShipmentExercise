@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shipmentexercise.databinding.ActivityMainBinding
 import com.example.shipmentexercise.mainAcitivity.adapter.DriverListAdapter
@@ -20,22 +19,17 @@ class MainActivity : AppCompatActivity(), OnClickListener {
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupViewModel()
         setupRecyclerView()
-        binding.fab.setOnClickListener {
-            mainViewModel.getAllDrivers()
-            mAdapter.notifyDataSetChanged()
-        }
     }
 
     private fun setupViewModel() {
         mainViewModel.getAllDrivers()
-        mainViewModel.getAllShipmets()
-        mainViewModel.driverModel.observe(this, Observer { driverList ->
+        mainViewModel.getAllShipments()
+        mainViewModel.driverModel.observe(this, { driverList ->
             mAdapter.submitList(driverList)
         })
     }
@@ -55,5 +49,4 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         mainViewModel.calculateSS(driver)
         mAdapter.notifyDataSetChanged()
     }
-
 }

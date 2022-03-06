@@ -1,6 +1,5 @@
 package com.example.shipmentexercise.mainAcitivity.viewModel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.shipmentexercise.mainAcitivity.model.Driver
@@ -10,14 +9,14 @@ import java.util.*
 
 class MainViewModel : ViewModel() {
     val driverModel = MutableLiveData<List<Driver>>()
-    val shipmentsModel = MutableLiveData<List<Shipment>>()
+    private val shipmentsModel = MutableLiveData<List<Shipment>>()
 
     fun getAllDrivers() {
         val driversList: List<Driver> = DataProvider.getAllDrivers()
         driverModel.postValue(driversList)
     }
 
-    fun getAllShipmets() {
+    fun getAllShipments() {
         val shipmentList: List<Shipment> = DataProvider.getAllShipments()
         shipmentsModel.postValue(shipmentList)
     }
@@ -27,10 +26,10 @@ class MainViewModel : ViewModel() {
         var scoreAux: Float
         if (driver.shipment == null) {
             shipmentsModel.value?.forEach { shipment ->
-                if (shipment.address.length % 2 == 0) {
-                    scoreAux = countVowelsAndConsonants(driver).first * 1.5f
+                scoreAux = if (shipment.address.length % 2 == 0) {
+                    countVowelsAndConsonants(driver).first * 1.5f
                 } else {
-                    scoreAux = countVowelsAndConsonants(driver).second.toFloat()
+                    countVowelsAndConsonants(driver).second.toFloat()
                 }
                 if (findGcd(shipment.address.length, driver.name.length) != 1) {
                     scoreAux *= 1.5f
@@ -50,8 +49,6 @@ class MainViewModel : ViewModel() {
                     }
                 }
             }
-
-            Log.i("BARCOS", shipmentList.sortedByDescending { it.second }.toString())
         }
     }
 
